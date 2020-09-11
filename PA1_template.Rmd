@@ -1,6 +1,6 @@
 ---
 title: "Course Project 1 - Steps Data"
-author: "Ricardo Pellegrini"
+author: "Ricardo C. Pellegrini"
 date: "09/09/2020"
 <<<<<<< HEAD
 output: 

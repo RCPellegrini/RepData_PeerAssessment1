@@ -1,10 +1,14 @@
 ---
 title: "Course Project 1 - Steps Data"
-author: "Ricardo Pellegrini"
+author: "Ricardo C. Pellegrini"
 date: "09/09/2020"
+<<<<<<< HEAD
 output: 
     html_document: 
       keep_md: true 
+=======
+output: html_document
+>>>>>>> e79550d3ebd46eefebd560f56979d873492667e8
 ---
 
 ## Loading and processing the data
@@ -16,12 +20,22 @@ unzip("activity.zip")
 activity <- read.csv("activity.csv")
 activity[,2]= as.Date(activity[,2])
 ```
+<<<<<<< HEAD
  
 ## What is the mean of the total number of steps taken per day?
 
 The total steps per day are summed up using the 'summarise' function, and with that we can plot the histogram and calculate the mean and median.
+=======
 
+## What is the mean of the total number of steps taken per day?
+>>>>>>> e79550d3ebd46eefebd560f56979d873492667e8
 
+The total steps per day are summed up using the 'summarise' function, and with that we can plot the histogram and calculate the mean and median.
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> e79550d3ebd46eefebd560f56979d873492667e8
 
 ```r
 library(dplyr)
@@ -79,21 +93,24 @@ The average daily activity pattern is calculated with the mean of each 5-minutes
 
 ```r
 steps_per_interval <- summarise(group_by(activity,interval), Steps_Mean=mean(steps, na.rm = TRUE))
-```
+<<<<<<< HEAD
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
 plot(steps_per_interval$interval, steps_per_interval$Steps_Mean, type = "l", xlab="24 Hours Period Separated in 5 Minutes Interval (hhmm format)", main="Daily Activity Pattern", ylab = "Mean of the Steps"  , xlim = c(0,2400))
-```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+=======
 
-```r
+plot(steps_per_interval$interval, steps_per_interval$Steps_Mean, type = "l", xlab="24 Hours Period Separated in 5 Minutes Interval (hhmm format)", main="Daily Activity Pattern", ylab = "Mean of the Steps"  , xlim = c(0,2400))
+
+>>>>>>> e79550d3ebd46eefebd560f56979d873492667e8
 max_Steps_Interval <- steps_per_interval[which.max(steps_per_interval$Steps_Mean),1]
 max_steps_period <- sub('(\\d{2})$', ':\\1', max_Steps_Interval)
+```
+
+```
+## Error: <text>:2:1: unerwartete Eingabe
+## 1: steps_per_interval <- summarise(group_by(activity,interval), Steps_Mean=mean(steps, na.rm = TRUE))
+## 2: <<
+##    ^
 ```
 The 5-minute interval that contains the maximum number of steps is on **8:35am**.
 
@@ -126,17 +143,13 @@ summary(activity2)
 
 ```r
 steps_per_day2 <- summarise(group_by(activity2,date), Steps=sum(steps, na.rm = TRUE))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
 ST_mean2 <- mean(steps_per_day2$Steps, na.rm = TRUE)
 ST_mean2 <- format(round(ST_mean2, 2), nsmall = 2)
 ST_median2 <- median(steps_per_day2$Steps, na.rm = TRUE)
+<<<<<<< HEAD
 
+=======
+>>>>>>> e79550d3ebd46eefebd560f56979d873492667e8
 
 hist(steps_per_day2$Steps, breaks=20, xlab="total steps per day", main="Frequency of steps per day", ylim=c(0,20) ,xlim = c(0,25000))
 abline(v=ST_mean2, col="green", lwd=4)
@@ -144,7 +157,21 @@ abline(v=ST_median2, col="purple", lwd=4, lty=2)
 legend(x="topright", legend=c("Mean","Median"), col=c("green","purple"), bty="n", lwd=2.5)
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
+```
+## Error: <text>:5:1: unerwartete Eingabe
+## 4: ST_median2 <- median(steps_per_day2$Steps, na.rm = TRUE)
+## 5: <<
+##    ^
+```
+The mean of the total number of steps taken per day now is **10766.19** and the median is **1.0766189 &times; 10<sup>4</sup>**.
+
+This means that both mean and median have increased and now they have the same value. Those values are related to an impact on the total number of steps, that have increased because of the additional values filled in the 2304 empty values.
+
+hist(steps_per_day2$Steps, breaks=20, xlab="total steps per day", main="Frequency of steps per day", ylim=c(0,20) ,xlim = c(0,25000))
+abline(v=ST_mean2, col="green", lwd=4)
+abline(v=ST_median2, col="purple", lwd=4, lty=2)
+legend(x="topright", legend=c("Mean","Median"), col=c("green","purple"), bty="n", lwd=2.5)
+```
 The mean of the total number of steps taken per day now is **10766.19** and the median is **1.0766189 &times; 10<sup>4</sup>**.
 
 This means that both mean and median have increased and now they have the same value. Those values are related to an impact on the total number of steps, that have increased because of the additional values filled in the 2304 empty values.
