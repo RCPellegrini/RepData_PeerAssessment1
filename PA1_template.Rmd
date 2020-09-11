@@ -21,7 +21,6 @@ The total steps per day are summed up using the 'summarise' function, and with t
 
 ```{r echo=TRUE}
 library(dplyr)
-library(ggplot2)
 steps_per_day <- summarise(group_by(activity,date), Steps=sum(steps, na.rm = TRUE))
 ST_mean <- mean(steps_per_day$Steps, na.rm = TRUE)
 ST_mean <- format(round(ST_mean, 2), nsmall = 2)
@@ -67,6 +66,7 @@ steps_per_day2 <- summarise(group_by(activity2,date), Steps=sum(steps, na.rm = T
 ST_mean2 <- mean(steps_per_day2$Steps, na.rm = TRUE)
 ST_mean2 <- format(round(ST_mean2, 2), nsmall = 2)
 ST_median2 <- median(steps_per_day2$Steps, na.rm = TRUE)
+ST_median2 <- format(round(ST_median2, 2), nsmall = 2)
 hist(steps_per_day2$Steps, breaks=20, xlab="total steps per day", main="Frequency of steps per day", ylim=c(0,20) ,xlim = c(0,25000))
 abline(v=ST_mean2, col="green", lwd=4)
 abline(v=ST_median2, col="purple", lwd=4, lty=2)

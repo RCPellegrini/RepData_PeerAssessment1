@@ -43,7 +43,6 @@ library(dplyr)
 ```
 
 ```r
-library(ggplot2)
 steps_per_day <- summarise(group_by(activity,date), Steps=sum(steps, na.rm = TRUE))
 ```
 
@@ -131,6 +130,7 @@ steps_per_day2 <- summarise(group_by(activity2,date), Steps=sum(steps, na.rm = T
 ST_mean2 <- mean(steps_per_day2$Steps, na.rm = TRUE)
 ST_mean2 <- format(round(ST_mean2, 2), nsmall = 2)
 ST_median2 <- median(steps_per_day2$Steps, na.rm = TRUE)
+ST_median2 <- format(round(ST_median2, 2), nsmall = 2)
 hist(steps_per_day2$Steps, breaks=20, xlab="total steps per day", main="Frequency of steps per day", ylim=c(0,20) ,xlim = c(0,25000))
 abline(v=ST_mean2, col="green", lwd=4)
 abline(v=ST_median2, col="purple", lwd=4, lty=2)
@@ -138,7 +138,7 @@ legend(x="topright", legend=c("Mean","Median"), col=c("green","purple"), bty="n"
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
-The mean of the total number of steps taken per day now is **10766.19** and the median is **1.0766189\times 10^{4}**.
+The mean of the total number of steps taken per day now is **10766.19** and the median is **10766.19**.
 
 This means that both mean and median have increased and now they have the same value. Those values are related to an impact on the total number of steps, that have increased because of the additional values filled in the 2304 empty values.
 
